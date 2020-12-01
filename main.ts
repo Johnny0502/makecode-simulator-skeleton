@@ -280,8 +280,7 @@ forever(function () {
             .bbbbbbbbbbbbbbbbbbbbbb.
             ..bbbbbbbbbbbbbbbbbbbb..
             `)
-        game.showLongText("Weight:" + objectWeight + " " + "Material:" + objectMaterial + " " + "Height:" + boxHeight + " " + "Weight:" + "", DialogLayout.Center)
-        game.showLongText("Material: " + objectMaterial, DialogLayout.Center)
+        game.showLongText("Weight:" + objectWeight + " " + "Material:" + objectMaterial, DialogLayout.Center)
         pause(1000)
         if (objectMaterial == "Unknown") {
             pause(300)
