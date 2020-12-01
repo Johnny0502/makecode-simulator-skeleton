@@ -55,12 +55,8 @@ function resetBox () {
     pause(200)
     box.setVelocity(25, 0)
 }
-function doSomething (mySprite: Sprite, text: string) {
-    if ("" == "") {
-    	
-    }
-}
 // Create and place game map and objects
+let TypeArray: number[] = []
 let orientation = 0
 let objectWeight = 0
 let objectMaterial = ""
@@ -272,6 +268,7 @@ let sideOrientation = sprites.create(img`
 tiles.placeOnTile(sideOrientation, tiles.getTileLocation(10, 9))
 resetBox()
 forever(function () {
+    TypeArray = [boxLength, boxWidth, boxHeight, objectWeight]
     if (box.overlapsWith(pinkButton)) {
         pinkButton.say("Scanning")
         game.setDialogFrame(img`
@@ -301,7 +298,35 @@ forever(function () {
             ..bbbbbbbbbbbbbbbbbbbb..
             `)
         game.showLongText(objectMaterial, DialogLayout.Center)
-    } else if (box.overlapsWith(blueButton)) {
+    }
+    if (box.overlapsWith(pinkButton)) {
         blueButton.say("Scanning")
+        game.setDialogFrame(img`
+            ..bbbbbbbbbbbbbbbbbbbb..
+            .bd111111111111111111db.
+            bd1dbbbbbbbbbbbbbbbbd1db
+            b1dbbbbbbbbbbbbbbbbbbd1b
+            b1bd1111111111111111db1b
+            b1b111111111111111111b1b
+            b1b111111111111111111b1b
+            b1b111111111111111111b1b
+            b1b111111111111111111b1b
+            b1b111111111111111111b1b
+            b1b111111111111111111b1b
+            b1b111111111111111111b1b
+            b1b111111111111111111b1b
+            b1b111111111111111111b1b
+            b1b111111111111111111b1b
+            b1b111111111111111111b1b
+            b1b111111111111111111b1b
+            b1b111111111111111111b1b
+            b1b111111111111111111b1b
+            b1bd1111111111111111db1b
+            bd1bbbbbbbbbbbbbbbbbb1db
+            bbd111111111111111111dbb
+            .bbbbbbbbbbbbbbbbbbbbbb.
+            ..bbbbbbbbbbbbbbbbbbbb..
+            `)
+        game.showLongText("", DialogLayout.Center)
     }
 })
