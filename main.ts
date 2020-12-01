@@ -296,7 +296,7 @@ forever(function () {
             ..bbbbbbbbbbbbbbbbbbbb..
             `)
         game.showLongText("Length:" + boxLength + " " + "Width:" + boxWidth + " " + "Height:" + boxHeight + " " + "Weight:" + objectWeight, DialogLayout.Center)
-        game.showLongText(objectMaterial, DialogLayout.Center)
+        game.showLongText("Material: " + objectMaterial, DialogLayout.Center)
         pause(1000)
         if (objectMaterial == "Unknown") {
             pause(300)
