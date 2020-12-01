@@ -55,7 +55,9 @@ function resetBox () {
     pause(200)
     box.setVelocity(25, 0)
 }
-// Create and place game map and objects
+/**
+ * Create and place game map and objects
+ */
 let orientation = 0
 let objectWeight = 0
 let objectMaterial = ""
@@ -68,24 +70,7 @@ let blueButton: Sprite = null
 let box: Sprite = null
 let monkey: Sprite = null
 let pause2 = false
-tiles.setTilemap(tiles.createTilemap(hex`1000100004040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040704040404040704040404040404080105010901090106010901030404040404040402040204040402040404040404040404030403040404030404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404040404`, img`
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    `, [myTiles.transparency16,sprites.vehicle.roadHorizontal,sprites.vehicle.roadVertical,sprites.dungeon.chestClosed,sprites.dungeon.floorLight2,sprites.dungeon.buttonPink,sprites.dungeon.buttonTeal,myTiles.tile1,sprites.dungeon.chestOpen,myTiles.tile2], TileScale.Sixteen))
+tiles.setTilemap(tilemap`level_0`)
 pause2 = false
 monkey = sprites.create(img`
     ................................
@@ -295,7 +280,7 @@ forever(function () {
             .bbbbbbbbbbbbbbbbbbbbbb.
             ..bbbbbbbbbbbbbbbbbbbb..
             `)
-        game.showLongText("Length:" + boxLength + " " + "Width:" + boxWidth + " " + "Height:" + boxHeight + " " + "Weight:" + objectWeight, DialogLayout.Center)
+        game.showLongText("Weight:" + objectWeight + " " + "Material:" + objectMaterial + " " + "Height:" + boxHeight + " " + "Weight:" + "", DialogLayout.Center)
         game.showLongText("Material: " + objectMaterial, DialogLayout.Center)
         pause(1000)
         if (objectMaterial == "Unknown") {
@@ -305,6 +290,14 @@ forever(function () {
             box.setVelocity(0, 0)
             box.destroy()
             game.showLongText("Unknown", DialogLayout.Top)
+            game.reset()
+        } else if (objectMaterial == "Rubber") {
+            pause(1550)
+            box.setVelocity(0, 25)
+            pause(1300)
+            box.setVelocity(0, 0)
+            box.destroy()
+            game.showLongText("Cheerio", DialogLayout.Top)
             game.reset()
         }
     }
