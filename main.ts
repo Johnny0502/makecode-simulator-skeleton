@@ -301,10 +301,11 @@ forever(function () {
         if (objectMaterial == "Unknown") {
             pause(300)
             box.setVelocity(0, 25)
-            if (box.overlapsWith(unknown)) {
-                game.showLongText(objectMaterial, DialogLayout.Center)
-                box.setVelocity(0, 0)
-            }
+            pause(1300)
+            box.setVelocity(0, 0)
+            box.destroy()
+            game.showLongText("Unknown", DialogLayout.Top)
+            game.reset()
         }
     }
 })
