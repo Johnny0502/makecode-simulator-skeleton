@@ -55,12 +55,6 @@ function resetBox () {
     pause(200)
     box.setVelocity(25, 0)
 }
-function doSomething (mySprite: Sprite, text: string) {
-    if ("" == "") {
-    	
-    }
-}
-// Create and place game map and objects
 let orientation = 0
 let objectWeight = 0
 let objectMaterial = ""
@@ -274,7 +268,9 @@ resetBox()
 forever(function () {
     if (box.overlapsWith(pinkButton)) {
         pinkButton.say("Scanning")
-    } else if (box.overlapsWith(blueButton)) {
+        game.showLongText(objectMaterial, DialogLayout.Bottom)
+    }
+    if (box.overlapsWith(blueButton)) {
         blueButton.say("Scanning")
     }
 })
