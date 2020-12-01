@@ -274,6 +274,7 @@ resetBox()
 forever(function () {
     if (box.overlapsWith(pinkButton)) {
         pinkButton.say("Scanning")
+        game.showLongText("", DialogLayout.Bottom)
     } else if (box.overlapsWith(blueButton)) {
         blueButton.say("Scanning")
     }
