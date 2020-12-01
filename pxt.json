@@ -2,7 +2,9 @@
     "name": "Makecode Simulator Skeleton",
     "description": "",
     "dependencies": {
-        "device": "*"
+        "device": "*",
+        "arcade-text": "github:microsoft/arcade-text#v1.3.0",
+        "storyboard": "*"
     },
     "files": [
         "main.blocks",
