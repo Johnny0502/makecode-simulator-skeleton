@@ -282,18 +282,65 @@ forever(function () {
             box.destroy()
             game.showLongText("Unknown", DialogLayout.Top)
             game.reset()
-        } else if (objectMaterial == "Rubber") {
+        } else if (objectMaterial == "rubber") {
             pause(1550)
             box.setVelocity(0, 25)
             pause(1300)
             box.setVelocity(0, 0)
             box.destroy()
-            game.showLongText("Cheerio", DialogLayout.Top)
+            game.showLongText("Giant Cheerios!", DialogLayout.Top)
             game.reset()
         }
     }
     if (box.overlapsWith(blueButton)) {
-        game.showLongText("Hello", DialogLayout.Bottom)
+        game.setDialogFrame(img`
+            ..bbbbbbbbbbbbbbbbbbbb..
+            .bd111111111111111111db.
+            bd1dbbbbbbbbbbbbbbbbd1db
+            b1dbbbbbbbbbbbbbbbbbbd1b
+            b1bd1111111111111111db1b
+            b1b111111111111111111b1b
+            b1b111111111111111111b1b
+            b1b111111111111111111b1b
+            b1b111111111111111111b1b
+            b1b111111111111111111b1b
+            b1b111111111111111111b1b
+            b1b111111111111111111b1b
+            b1b111111111111111111b1b
+            b1b111111111111111111b1b
+            b1b111111111111111111b1b
+            b1b111111111111111111b1b
+            b1b111111111111111111b1b
+            b1b111111111111111111b1b
+            b1b111111111111111111b1b
+            b1bd1111111111111111db1b
+            bd1bbbbbbbbbbbbbbbbbb1db
+            bbd111111111111111111dbb
+            .bbbbbbbbbbbbbbbbbbbbbb.
+            ..bbbbbbbbbbbbbbbbbbbb..
+            `)
+        if (orientation == 0) {
+            game.showLongText("Orientation:" + "Side", DialogLayout.Center)
+        } else {
+            game.showLongText("Orientation:" + "Up", DialogLayout.Center)
+        }
         pause(1000)
+        if (orientation == 0) {
+            pause(300)
+            box.setVelocity(0, 25)
+            pause(1300)
+            box.setVelocity(0, 0)
+            box.destroy()
+            game.showLongText("Side Goat Figurine!", DialogLayout.Top)
+            game.reset()
+        } else {
+            pause(1550)
+            box.setVelocity(0, 25)
+            pause(1300)
+            box.setVelocity(0, 0)
+            box.destroy()
+            game.showLongText("Up Goat Figurine!", DialogLayout.Top)
+            game.reset()
+        }
     }
 })
