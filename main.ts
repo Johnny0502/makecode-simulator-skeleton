@@ -147,6 +147,25 @@ blueButton = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.button)
 tiles.placeOnTile(blueButton, tiles.getTileLocation(8, 7))
+let pinkButton = sprites.create(img`
+    . . . . . . . . . . . . . . . b 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.button)
+tiles.placeOnTile(pinkButton, tiles.getTileLocation(2, 7))
 junction1 = sprites.create(img`
     . . . . . . . . . . . . . . . b 
     . . . . . . . . . . . . . . . . 
@@ -165,7 +184,7 @@ junction1 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.button)
-tiles.placeOnTile(junction1, tiles.getTileLocation(2, 7))
+tiles.placeOnTile(junction1, tiles.getTileLocation(4, 7))
 let unknown = sprites.create(img`
     . . . . . . . . . . . . . . . b 
     . . . . . . . . . . . . . . . . 
@@ -184,7 +203,7 @@ let unknown = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.unknownBin)
-tiles.placeOnTile(unknown, tiles.getTileLocation(4, 9))
+tiles.placeOnTile(unknown, tiles.getTileLocation(4, 10))
 let junction2 = sprites.create(img`
     . . . . . . . . . . . . . . . b 
     . . . . . . . . . . . . . . . . 
@@ -202,7 +221,7 @@ let junction2 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
-    `, SpriteKind.button)
+    `, SpriteKind.Food)
 tiles.placeOnTile(junction2, tiles.getTileLocation(6, 7))
 let cheerio = sprites.create(img`
     . . . . . . . . . . . . . . . b 
@@ -222,7 +241,7 @@ let cheerio = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.cheerioBin)
-tiles.placeOnTile(cheerio, tiles.getTileLocation(6, 9))
+tiles.placeOnTile(cheerio, tiles.getTileLocation(6, 10))
 let junction3 = sprites.create(img`
     . . . . . . . . . . . . . . . b 
     . . . . . . . . . . . . . . . . 
@@ -259,7 +278,7 @@ let upOrientation = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
-    `, SpriteKind.upBin)
+    `, SpriteKind.Food)
 tiles.placeOnTile(upOrientation, tiles.getTileLocation(12, 7))
 let sideOrientation = sprites.create(img`
     . . . . . . . . . . . . . . . b 
@@ -279,11 +298,11 @@ let sideOrientation = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.sideBin)
-tiles.placeOnTile(sideOrientation, tiles.getTileLocation(10, 9))
+tiles.placeOnTile(sideOrientation, tiles.getTileLocation(10, 10))
 resetBox()
 forever(function () {
-    if (box.overlapsWith(junction1)) {
-        junction1.say("Scanning...", 500)
+    if (box.overlapsWith(pinkButton)) {
+        pinkButton.say("Scanning...", 500)
         game.setDialogFrame(img`
             ..bbbbbbbbbbbbbbbbbbbb..
             .bd111111111111111111db.
@@ -312,29 +331,6 @@ forever(function () {
             `)
         game.showLongText("Weight:" + objectWeight + " " + "Material:" + objectMaterial, DialogLayout.Center)
         pause(1000)
-        if (objectMaterial == "Unknown") {
-            pause(300)
-            box.setVelocity(0, 25)
-            pause(1300)
-            box.setVelocity(0, 0)
-            if (box.overlapsWith(unknown)) {
-                unknown.say("Unknown", 500)
-                box.destroy()
-                pause(1000)
-            }
-            game.reset()
-        } else if (objectMaterial == "Rubber") {
-            pause(1550)
-            box.setVelocity(0, 25)
-            pause(1300)
-            box.setVelocity(0, 0)
-            if (box.overlapsWith(cheerio)) {
-                cheerio.say("Giant Cheerios!", 500)
-                box.destroy()
-                pause(1000)
-            }
-            game.reset()
-        }
     }
     if (box.overlapsWith(blueButton)) {
         blueButton.say("Scanning...", 500)
@@ -365,33 +361,57 @@ forever(function () {
             ..bbbbbbbbbbbbbbbbbbbb..
             `)
         if (orientation == 0) {
-            game.showLongText("Orientation:" + "Side", DialogLayout.Center)
+            game.showLongText("Orientation:" + "Sideway", DialogLayout.Center)
         } else {
-            game.showLongText("Orientation:" + "Up", DialogLayout.Center)
+            game.showLongText("Orientation:" + "Upright", DialogLayout.Center)
         }
         pause(1000)
-        if (orientation == 0) {
-            pause(300)
+    }
+})
+forever(function () {
+    if (objectMaterial == "Unknown") {
+        if (box.overlapsWith(junction1)) {
             box.setVelocity(0, 25)
-            pause(1300)
-            box.setVelocity(0, 0)
-            if (box.overlapsWith(sideOrientation)) {
-                sideOrientation.say("Side Goat Figurine!", 1000)
-                box.destroy()
-                pause(1000)
-            }
-            game.reset()
-        } else {
-            pause(1550)
-            box.setVelocity(0, 0)
-            pause(100)
-            box.setVelocity(0, 0)
-            if (box.overlapsWith(upOrientation)) {
-                upOrientation.say("Up Goat Figurine!", 1000)
-                box.destroy()
-                pause(1000)
-            }
-            game.reset()
         }
+    }
+    if (box.overlapsWith(unknown)) {
+        box.setVelocity(0, 0)
+        box.destroy(effects.spray, 500)
+        unknown.say("Unknown", 2000)
+        pause(2000)
+        game.reset()
+    }
+    if (objectMaterial == "Rubber") {
+        if (box.overlapsWith(junction2)) {
+            box.setVelocity(0, 25)
+        }
+    }
+    if (box.overlapsWith(cheerio)) {
+        box.setVelocity(0, 0)
+        box.destroy(effects.spray, 500)
+        cheerio.say("Giant Cheerios!", 2000)
+        pause(2000)
+        game.reset()
+    }
+})
+forever(function () {
+    if (orientation == 0) {
+        if (box.overlapsWith(junction3)) {
+            box.setVelocity(0, 25)
+        }
+    }
+    if (box.overlapsWith(sideOrientation)) {
+        box.setVelocity(0, 0)
+        box.destroy(effects.spray, 500)
+        sideOrientation.say("Porcelain Side Orientation", 2000)
+        pause(2000)
+        game.reset()
+    }
+    if (box.overlapsWith(upOrientation)) {
+        box.setVelocity(0, 0)
+        box.destroy(effects.spray, 500)
+        upOrientation.say("Porcelain Upright Orientation", 2000)
+        pause(2000)
+        game.reset()
     }
 })
