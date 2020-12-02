@@ -46,7 +46,7 @@ function resetBox () {
         objectWeight = randint(0, 2)
     }
     console.log(_type)
-    pinkButton.setFlag(SpriteFlag.Ghost, false)
+    junction1.setFlag(SpriteFlag.Ghost, false)
     blueButton.setFlag(SpriteFlag.Ghost, false)
     box.setFlag(SpriteFlag.Invisible, true)
     pause(500)
@@ -65,7 +65,7 @@ let boxHeight = 0
 let boxWidth = 0
 let boxLength = 0
 let _type = 0
-let pinkButton: Sprite = null
+let junction1: Sprite = null
 let blueButton: Sprite = null
 let box: Sprite = null
 let monkey: Sprite = null
@@ -147,7 +147,7 @@ blueButton = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.button)
 tiles.placeOnTile(blueButton, tiles.getTileLocation(8, 7))
-pinkButton = sprites.create(img`
+junction1 = sprites.create(img`
     . . . . . . . . . . . . . . . b 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -165,7 +165,7 @@ pinkButton = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.button)
-tiles.placeOnTile(pinkButton, tiles.getTileLocation(2, 7))
+tiles.placeOnTile(junction1, tiles.getTileLocation(2, 7))
 let unknown = sprites.create(img`
     . . . . . . . . . . . . . . . b 
     . . . . . . . . . . . . . . . . 
@@ -185,6 +185,25 @@ let unknown = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.unknownBin)
 tiles.placeOnTile(unknown, tiles.getTileLocation(4, 9))
+let junction2 = sprites.create(img`
+    . . . . . . . . . . . . . . . b 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.button)
+tiles.placeOnTile(junction2, tiles.getTileLocation(6, 7))
 let cheerio = sprites.create(img`
     . . . . . . . . . . . . . . . b 
     . . . . . . . . . . . . . . . . 
@@ -204,6 +223,25 @@ let cheerio = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.cheerioBin)
 tiles.placeOnTile(cheerio, tiles.getTileLocation(6, 9))
+let junction3 = sprites.create(img`
+    . . . . . . . . . . . . . . . b 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.cheerioBin)
+tiles.placeOnTile(junction3, tiles.getTileLocation(10, 7))
 let upOrientation = sprites.create(img`
     . . . . . . . . . . . . . . . b 
     . . . . . . . . . . . . . . . . 
@@ -244,8 +282,8 @@ let sideOrientation = sprites.create(img`
 tiles.placeOnTile(sideOrientation, tiles.getTileLocation(10, 9))
 resetBox()
 forever(function () {
-    if (box.overlapsWith(pinkButton)) {
-        pinkButton.say("Scanning...", 500)
+    if (box.overlapsWith(junction1)) {
+        junction1.say("Scanning...", 500)
         game.setDialogFrame(img`
             ..bbbbbbbbbbbbbbbbbbbb..
             .bd111111111111111111db.
