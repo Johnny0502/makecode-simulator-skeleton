@@ -245,7 +245,7 @@ tiles.placeOnTile(sideOrientation, tiles.getTileLocation(10, 9))
 resetBox()
 forever(function () {
     if (box.overlapsWith(pinkButton)) {
-        pinkButton.say("Scanning", 500)
+        pinkButton.say("Scanning...", 500)
         game.setDialogFrame(img`
             ..bbbbbbbbbbbbbbbbbbbb..
             .bd111111111111111111db.
@@ -279,20 +279,27 @@ forever(function () {
             box.setVelocity(0, 25)
             pause(1300)
             box.setVelocity(0, 0)
-            box.destroy()
-            game.showLongText("Unknown", DialogLayout.Top)
+            if (box.overlapsWith(unknown)) {
+                unknown.say("Unknown", 500)
+                box.destroy()
+                pause(1000)
+            }
             game.reset()
-        } else if (objectMaterial == "rubber") {
+        } else if (objectMaterial == "Rubber") {
             pause(1550)
             box.setVelocity(0, 25)
             pause(1300)
             box.setVelocity(0, 0)
-            box.destroy()
-            game.showLongText("Giant Cheerios!", DialogLayout.Top)
+            if (box.overlapsWith(cheerio)) {
+                cheerio.say("Giant Cheerios!", 500)
+                box.destroy()
+                pause(1000)
+            }
             game.reset()
         }
     }
     if (box.overlapsWith(blueButton)) {
+        blueButton.say("Scanning...", 500)
         game.setDialogFrame(img`
             ..bbbbbbbbbbbbbbbbbbbb..
             .bd111111111111111111db.
@@ -330,16 +337,22 @@ forever(function () {
             box.setVelocity(0, 25)
             pause(1300)
             box.setVelocity(0, 0)
-            box.destroy()
-            game.showLongText("Side Goat Figurine!", DialogLayout.Top)
+            if (box.overlapsWith(sideOrientation)) {
+                sideOrientation.say("Side Goat Figurine!", 500)
+                box.destroy()
+                pause(2000)
+            }
             game.reset()
         } else {
             pause(1550)
-            box.setVelocity(0, 25)
-            pause(1300)
             box.setVelocity(0, 0)
-            box.destroy()
-            game.showLongText("Up Goat Figurine!", DialogLayout.Top)
+            pause(100)
+            box.setVelocity(0, 0)
+            if (box.overlapsWith(upOrientation)) {
+                upOrientation.say("Up Goat Figurine!", 500)
+                box.destroy()
+                pause(2000)
+            }
             game.reset()
         }
     }
