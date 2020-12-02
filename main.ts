@@ -338,9 +338,9 @@ forever(function () {
             pause(1300)
             box.setVelocity(0, 0)
             if (box.overlapsWith(sideOrientation)) {
-                sideOrientation.say("Side Goat Figurine!", 500)
+                sideOrientation.say("Side Goat Figurine!", 1000)
                 box.destroy()
-                pause(2000)
+                pause(1000)
             }
             game.reset()
         } else {
@@ -349,9 +349,9 @@ forever(function () {
             pause(100)
             box.setVelocity(0, 0)
             if (box.overlapsWith(upOrientation)) {
-                upOrientation.say("Up Goat Figurine!", 500)
+                upOrientation.say("Up Goat Figurine!", 1000)
                 box.destroy()
-                pause(2000)
+                pause(1000)
             }
             game.reset()
         }
