@@ -329,7 +329,7 @@ forever(function () {
             .bbbbbbbbbbbbbbbbbbbbbb.
             ..bbbbbbbbbbbbbbbbbbbb..
             `)
-        game.showLongText("Weight:" + objectWeight + " " + "Material:" + objectMaterial, DialogLayout.Center)
+        game.showLongText("Weight: " + objectWeight + "                           " + "Material: " + objectMaterial, DialogLayout.Center)
         pause(1000)
     }
     if (box.overlapsWith(blueButton)) {
