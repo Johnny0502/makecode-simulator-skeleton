@@ -20,7 +20,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         box.setFlag(SpriteFlag.Invisible, false)
         resetBox()
     }
-    scene.cameraFollowSprite(box)
+    scene.cameraFollowSprite(monkey)
 })
 // Reset to initial conditions with new box and parameters for type and dimensions
 function resetBox () {
@@ -65,10 +65,11 @@ let _type = 0
 let junction1: Sprite = null
 let blueButton: Sprite = null
 let box: Sprite = null
+let monkey: Sprite = null
 let pause2 = false
 tiles.setTilemap(tilemap`level`)
 pause2 = false
-let monkey = sprites.create(img`
+monkey = sprites.create(img`
     ................................
     ................................
     ................................
