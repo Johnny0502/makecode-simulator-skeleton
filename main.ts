@@ -20,7 +20,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         box.setFlag(SpriteFlag.Invisible, false)
         resetBox()
     }
-    scene.cameraFollowSprite(monkey)
+    scene.cameraFollowSprite(box)
 })
 // Reset to initial conditions with new box and parameters for type and dimensions
 function resetBox () {
@@ -55,9 +55,6 @@ function resetBox () {
     pause(200)
     box.setVelocity(25, 0)
 }
-/**
- * Create and place game map and objects
- */
 let orientation = 0
 let objectWeight = 0
 let objectMaterial = ""
@@ -68,11 +65,10 @@ let _type = 0
 let junction1: Sprite = null
 let blueButton: Sprite = null
 let box: Sprite = null
-let monkey: Sprite = null
 let pause2 = false
 tiles.setTilemap(tilemap`level`)
 pause2 = false
-monkey = sprites.create(img`
+let monkey = sprites.create(img`
     ................................
     ................................
     ................................
@@ -107,7 +103,6 @@ monkey = sprites.create(img`
     ..........fffffffffffff.........
     `, SpriteKind.Player)
 monkey.setFlag(SpriteFlag.ShowPhysics, true)
-scene.cameraFollowSprite(monkey)
 controller.moveSprite(monkey, 100, 100)
 tiles.placeOnTile(monkey, tiles.getTileLocation(5, 7))
 box = sprites.create(img`
@@ -300,6 +295,7 @@ let sideOrientation = sprites.create(img`
     `, SpriteKind.sideBin)
 tiles.placeOnTile(sideOrientation, tiles.getTileLocation(10, 10))
 resetBox()
+scene.cameraFollowSprite(box)
 forever(function () {
     if (box.overlapsWith(pinkButton)) {
         pinkButton.say("Scanning...", 500)
@@ -376,10 +372,9 @@ forever(function () {
     }
     if (box.overlapsWith(unknown)) {
         box.setVelocity(0, 0)
-        box.destroy(effects.spray, 500)
         unknown.say("Unknown", 2000)
-        pause(2000)
-        game.reset()
+        pause(1000)
+        resetBox()
     }
     if (objectMaterial == "Rubber") {
         if (box.overlapsWith(junction2)) {
@@ -388,10 +383,9 @@ forever(function () {
     }
     if (box.overlapsWith(cheerio)) {
         box.setVelocity(0, 0)
-        box.destroy(effects.spray, 500)
         cheerio.say("Giant Cheerios!", 2000)
-        pause(2000)
-        game.reset()
+        pause(1000)
+        resetBox()
     }
 })
 forever(function () {
@@ -402,16 +396,14 @@ forever(function () {
     }
     if (box.overlapsWith(sideOrientation)) {
         box.setVelocity(0, 0)
-        box.destroy(effects.spray, 500)
-        sideOrientation.say("Side Goat Figurine", 2000)
-        pause(2000)
-        game.reset()
+        sideOrientation.say("Side Figurine", 2000)
+        pause(1000)
+        resetBox()
     }
     if (box.overlapsWith(upOrientation)) {
         box.setVelocity(0, 0)
-        box.destroy(effects.spray, 500)
-        upOrientation.say("Upright Goat Figurine", 2000)
-        pause(2000)
-        game.reset()
+        upOrientation.say("Upright Figurine", 2000)
+        pause(1000)
+        resetBox()
     }
 })
