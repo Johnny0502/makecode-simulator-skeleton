@@ -361,9 +361,9 @@ forever(function () {
             ..bbbbbbbbbbbbbbbbbbbb..
             `)
         if (orientation == 0) {
-            game.showLongText("Orientation:" + "Sideway", DialogLayout.Center)
+            game.showLongText("Orientation:  " + "Sideway", DialogLayout.Center)
         } else {
-            game.showLongText("Orientation:" + "Upright", DialogLayout.Center)
+            game.showLongText("Orientation:  " + "Upright", DialogLayout.Center)
         }
         pause(1000)
     }
@@ -403,14 +403,14 @@ forever(function () {
     if (box.overlapsWith(sideOrientation)) {
         box.setVelocity(0, 0)
         box.destroy(effects.spray, 500)
-        sideOrientation.say("Porcelain Side Orientation", 2000)
+        sideOrientation.say("Side Goat Figurine", 2000)
         pause(2000)
         game.reset()
     }
     if (box.overlapsWith(upOrientation)) {
         box.setVelocity(0, 0)
         box.destroy(effects.spray, 500)
-        upOrientation.say("Porcelain Upright Orientation", 2000)
+        upOrientation.say("Upright Goat Figurine", 2000)
         pause(2000)
         game.reset()
     }
