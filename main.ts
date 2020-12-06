@@ -53,7 +53,7 @@ function resetBox () {
     tiles.placeOnTile(box, tiles.getTileLocation(0, 7))
     box.setFlag(SpriteFlag.Invisible, false)
     pause(200)
-    box.setVelocity(25, 0)
+    box.setVelocity(20, 0)
 }
 let orientation = 0
 let objectWeight = 0
@@ -368,23 +368,23 @@ forever(function () {
 forever(function () {
     if (objectMaterial == "Unknown") {
         if (box.overlapsWith(junction1)) {
-            box.setVelocity(0, 25)
+            box.setVelocity(0, 15)
         }
     }
     if (box.overlapsWith(unknown)) {
         box.setVelocity(0, 0)
-        unknown.say("Unknown", 2000)
+        unknown.say("Unknown", 1000)
         pause(1000)
         resetBox()
     }
     if (objectMaterial == "Rubber") {
         if (box.overlapsWith(junction2)) {
-            box.setVelocity(0, 25)
+            box.setVelocity(0, 15)
         }
     }
     if (box.overlapsWith(cheerio)) {
         box.setVelocity(0, 0)
-        cheerio.say("Giant Cheerios!", 2000)
+        cheerio.say("Giant Cheerios!", 1000)
         pause(1000)
         resetBox()
     }
@@ -392,18 +392,18 @@ forever(function () {
 forever(function () {
     if (orientation == 0) {
         if (box.overlapsWith(junction3)) {
-            box.setVelocity(0, 25)
+            box.setVelocity(0, 15)
         }
     }
     if (box.overlapsWith(sideOrientation)) {
         box.setVelocity(0, 0)
-        sideOrientation.say("Side Figurine", 2000)
+        sideOrientation.say("Side Figurine", 1000)
         pause(1000)
         resetBox()
     }
     if (box.overlapsWith(upOrientation)) {
         box.setVelocity(0, 0)
-        upOrientation.say("Upright Figurine", 2000)
+        upOrientation.say("Upright Figurine", 1000)
         pause(1000)
         resetBox()
     }
